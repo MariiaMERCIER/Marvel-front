@@ -56,6 +56,7 @@ header .menu button {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 .comics img {
@@ -131,12 +132,12 @@ header .menu button {
   flex-wrap: wrap;
 
   margin-top: 50px;
-  gap: 10px;
+  gap: 18px;
 }
 
 .character img {
-  width: 190px;
-  height: 210px;
+  width: 225px;
+  height: 175px;
   object-fit: cover;
   display: flex;
   align-items: center;
@@ -144,14 +145,19 @@ header .menu button {
 }
 
 .character .slide {
-  width: 190px;
-  height: 145px;
+  width: 225px;
+  height: 175px;
   background-color: black;
   color: white;
   padding: 15px;
   box-sizing: border-box;
 }
 
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .slide h2 {
   font-family: "Roboto Condensed Bold";
   font-size: 16px;
@@ -159,7 +165,7 @@ header .menu button {
 
 .slide p {
   font-family: "Roboto Condensed Regular";
-  margin-top: 15px;
+
   font-size: 14px;
   opacity: 50%;
   -webkit-line-clamp: 5;
@@ -168,3 +174,169 @@ header .menu button {
   overflow: hidden;
   letter-spacing: 1px;
 }
+
+.fiche-hero {
+  margin: 0 auto;
+  width: 900px;
+  height: 500px;
+
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background-color: black;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.fiche-hero img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+.biography {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-left: 20px;
+}
+
+.biography h3 {
+  font-family: "Roboto Condensed Bold";
+  font-size: 26px;
+}
+
+.biography div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.biography div span {
+  text-decoration: overline;
+  font-size: 14px;
+  color: grey;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.biography .favorite button {
+  border: none;
+  background-color: black;
+  color: rgb(190, 190, 190);
+}
+
+.biography .favorite {
+  margin-top: 100px;
+}
+.favorite {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  color: rgb(190, 190, 190);
+}
+
+.slide button {
+  color: rgb(190, 190, 190);
+  font-family: "Roboto-Regular";
+  border: none;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+}
+.favorite:hover {
+  color: rgb(255, 7, 7);
+}
+.favorite button:hover {
+  color: rgb(255, 7, 7);
+}
+
+header button {
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+
+.autorisation {
+  margin-left: 100px;
+}
+
+header button:hover {
+  color: rgb(255, 0, 0);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.signin {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+
+form {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 200px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 50px;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid white;
+  width: 450px;
+  height: 50px;
+  color: lightgrey;
+  background-color: black;
+  font-size: 14px;
+  padding-left: 15px;
+  font-family: "Roboto-Regular";
+}
+
+form button {
+  width: 250px;
+  height: 50px;
+  font-family: "Roboto Condensed Bold";
+  font-size: 18px;
+  color: lightgrey;
+  border: none;
+  background-color: rgb(144, 0, 0);
+}
+
+form input:focus {
+  outline-color: orange;
+  border-radius: 5px;
+}
+
+.banner {
+  /* position: relative; */
+  height: 60vh;
+  background-image: url("./assets/images/spiderman8.jpeg");
+  background-color: rgba(0, 0, 255, 0.3);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .banner::before {
+  content: "";
+ 
+  /* background-size: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 0.25;
+} */

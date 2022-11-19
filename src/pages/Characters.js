@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import characterIndefined from "../assets/images/characterUndefined.jpeg";
-import { Link } from "react-router-dom";
+
+import CharacterInfo from "../components/CharacterInfo";
 
 const Characters = () => {
   const [data, setData] = useState([]);
@@ -67,33 +67,7 @@ const Characters = () => {
       <div className="character">
         {data.results.map((character) => {
           // console.log(character);
-          return (
-            <Link to={`/character/${character._id}`} key={character._id}>
-              <div className="card-character">
-                {character.thumbnail.path ===
-                  "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ||
-                character.thumbnail.path ===
-                  "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708" ? (
-                  <img src={characterIndefined} alt="character" />
-                ) : (
-                  <img
-                    src={
-                      character.thumbnail.path +
-                      "." +
-                      character.thumbnail.extension
-                    }
-                    alt="character"
-                  />
-                )}
-                <div className="slide">
-                  <h2>{character.name}</h2>
-                  <div className="description">
-                    <p>{character.description}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          );
+          return <CharacterInfo character={character} key={character._id} />;
         })}
       </div>
     </div>

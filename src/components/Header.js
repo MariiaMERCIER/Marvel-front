@@ -11,12 +11,20 @@ const Header = () => {
           <Link to="/comics">
             <span>COMICS</span>
           </Link>
-          <Link to="/characters">
+          <Link to="/">
             <span>CHARACTERS</span>
           </Link>
-          <span>MES FAVORIS</span>
+          <span>MY FAVORITES</span>
 
-          <button>Sing in | Join </button>
+          <div className="autorisation">
+            <Link to="/user/signup">
+              <button>SIGN IN </button>
+            </Link>
+            <span>|</span>
+            <Link to="/user/login">
+              <button>LOG IN</button>
+            </Link>
+          </div>
         </nav>
       </div>
     </header>
