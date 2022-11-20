@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 const CharacterInfo = ({ character, token }) => {
   const handleClickFavorite = async (event) => {
     try {
+      // console.log(character._id, character.name, character.description, token);
       const response = await axios.post(
         "http://localhost:4000/favorites/character",
         {

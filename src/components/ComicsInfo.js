@@ -29,13 +29,12 @@ const ComicsInfo = ({ comics, token }) => {
       console.log(error.response.data.error);
     }
   };
-
   return (
     <>
       <div className="card-comics">
         {comics.thumbnail.path ===
         "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
-          <img classname="test3" src={noImageHero} alt="comics" />
+          <img className="test3" src={noImageHero} alt="comics" />
         ) : (
           <img
             src={comics.thumbnail.path + "." + comics.thumbnail.extension}

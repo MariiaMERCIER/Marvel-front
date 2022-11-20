@@ -16,24 +16,26 @@ const Header = ({ token, handleToken, nameUser }) => {
           <Link to="/">
             <span>CHARACTERS</span>
           </Link>
-          <Link to="/myfavorites">
-            <span>MY FAVORITES</span>
-          </Link>
 
           {token ? (
-            <div className="autorisation">
-              <button
-                style={{ marginRight: 20 }}
-                onClick={() => handleToken(null)}
-                className="deconnection"
-              >
-                DECONNEXION
-              </button>
+            <>
+              <Link to="/myfavorites">
+                <span>MY FAVORITES</span>
+              </Link>
+              <div className="autorisation">
+                <button
+                  style={{ marginRight: 20 }}
+                  onClick={() => handleToken(null)}
+                  className="deconnection"
+                >
+                  DECONNEXION
+                </button>
 
-              <FontAwesomeIcon icon="fa-solid fa-user" />
+                <FontAwesomeIcon icon="fa-solid fa-user" />
 
-              <span style={{ marginLeft: 10 }}>{nameUser}</span>
-            </div>
+                <span style={{ marginLeft: 10 }}>{nameUser}</span>
+              </div>
+            </>
           ) : (
             <div className="autorisation">
               <Link to="/user/signup">

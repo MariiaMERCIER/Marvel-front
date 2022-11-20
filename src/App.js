@@ -41,7 +41,7 @@ const App = () => {
     }
   };
 
-  const handleUserName = (handleUserName) => {
+  const handleUserName = (nameUser) => {
     if (nameUser) {
       setNameUser(nameUser);
       Cookies.set("nameUser", nameUser, { expires: 2 });

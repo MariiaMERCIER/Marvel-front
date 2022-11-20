@@ -52,6 +52,7 @@ const Character = ({ token }) => {
 
   const handleClickFavorite = async (event) => {
     try {
+      // console.log(token);
       const response = await axios.post(
         "http://localhost:4000/favorites/character",
         {

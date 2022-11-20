@@ -471,6 +471,8 @@ ul {
   font-size: 20px;
   margin-left: 150px;
   margin-top: 100px;
+  height: 60px;
+  margin-bottom: 150px;
 }
 
 li {
@@ -493,11 +495,28 @@ h4 {
 /* FOOTER */
 
 .footer {
-  background-color: black;
   color: white;
-  height: 60px;
+
   font-size: 14px;
+}
+
+.bottom-page {
+  height: 60px;
+  background-color: black;
   display: flex;
+
   align-items: center;
   justify-content: center;
+}
+
+.pages button {
+  margin-top: 15px;
+  font-size: 14px;
+  border: none;
+  background-color: white;
+}
+
+.pages button:active {
+  font-family: "Roboto-Bold";
+  color: red;
 }

@@ -10,7 +10,7 @@ const Comics = ({ token }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-
+  const [page, setPage] = useState(1);
   const [limit, setLimit] = useState("");
   const [skip, setSkip] = useState("");
 
@@ -32,7 +32,7 @@ const Comics = ({ token }) => {
       }
     };
     fetchData();
-  }, [search, limit, skip]);
+  }, [search, limit, skip, page]);
 
   const handleSerchChange = (event) => {
     setSearch(event.target.value);
@@ -88,6 +88,37 @@ const Comics = ({ token }) => {
             );
           })}
         </div>
+        {/* <div className="pages">
+          <button
+            onClick={() => {
+              setPage(1);
+            }}
+          >
+            1
+          </button>
+          <button
+            onClick={() => {
+              setPage(2);
+            }}
+          >
+            2
+          </button>
+          <button
+            onClick={() => {
+              setPage(3);
+            }}
+          >
+            3
+          </button>{" "}
+          <button
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            {">"}
+          </button>
+          <span>...</span>
+        </div> */}
       </div>
     </>
   );
