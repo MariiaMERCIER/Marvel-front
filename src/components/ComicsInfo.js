@@ -1,8 +1,35 @@
+import { Link } from "react-router-dom";
 import noImageHero from "../assets/images/noImageComics.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import toast from "react-hot-toast";
 
-const ComicsInfo = ({ comics }) => {
-  // console.log(comics._id);
+const ComicsInfo = ({ comics, token }) => {
+  const handleClickFavorite = async (event) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/favorites/comics",
+        {
+          id: comics._id,
+          name: comics.title,
+          description: comics.description,
+          image: comics.thumbnail.path + "." + comics.thumbnail.extension,
+        },
+
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("You've juste add the character in favoris");
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.error);
+    }
+  };
+
   return (
     <>
       <div className="card-comics">
@@ -19,10 +46,17 @@ const ComicsInfo = ({ comics }) => {
           <h2>{comics.title}</h2>
           <p className="test">{comics.description}</p>
           <div className="favorite test2">
-            <button>
-              FAVORITE {""}
-              <FontAwesomeIcon icon="fa-solid fa-heart" />
-            </button>
+            {token ? (
+              <button onClick={handleClickFavorite}>
+                FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+              </button>
+            ) : (
+              <Link to="/user/login">
+                <button>
+                  FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+                </button>{" "}
+              </Link>
+            )}
           </div>
         </div>
       </div>

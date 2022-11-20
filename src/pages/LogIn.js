@@ -3,10 +3,9 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LogIn = () => {
+const LogIn = ({ handleUserName, handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,11 +23,11 @@ const LogIn = () => {
         password: password,
       });
 
-      setToken(token);
-
+      // console.log(response.data.token);
+      handleToken(response.data.token);
+      handleUserName(response.data.name);
       navigate("/");
-
-      console.log(response.data);
+      toast.success("Welcome in the world MARVEL");
     } catch ({ error }) {
       console.log(error.response.message);
     }

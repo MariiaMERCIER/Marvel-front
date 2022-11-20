@@ -1,13 +1,12 @@
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-const SignUp = () => {
+const SignUp = ({ handleUserName, handleToken }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,18 +17,19 @@ const SignUp = () => {
         toast.error("Missing element of the form");
         return;
       }
-
+      // console.log(name, email, password);
       const response = await axios.post("http://localhost:4000/user/signup", {
         name: name,
         email: email,
         password: password,
       });
 
-      setToken(token);
-
+      handleToken(response.data.token);
+      handleUserName(response.data.name);
+      // console.log(token);
+      // console.log(response.data);
       navigate("/");
       toast.success("You've juste created your account");
-      console.log(response.data);
     } catch ({ error }) {
       console.log(error.response.data.error);
     }

@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import characterIndefined from "../assets/images/characterUndefined.jpeg";
 import noImageHero from "../assets/images/noImageComics.jpeg";
-import ComicsInfo from "../components/ComicsInfo";
 
-const Character = () => {
+const Character = ({ token }) => {
   const [dataCH, setDataCH] = useState([]);
   const [dataCOM, setDataCOM] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +50,31 @@ const Character = () => {
     fetchData();
   }, [characterId]);
 
+  const handleClickFavorite = async (event) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/favorites/character",
+        {
+          id: dataCH._id,
+          name: dataCH.name,
+          description: dataCH.description,
+          image: dataCH.thumbnail.path + "." + dataCH.thumbnail.extension,
+        },
+
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast.success("You've juste add the character in favoris");
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response.data.error);
+    }
+  };
+
   return isLoading ? (
     <div className="container loading">
       <p>Loading ...</p>
@@ -80,9 +106,17 @@ const Character = () => {
                 </div>
               )}
               <div className="favorite ">
-                <button>
-                  FAVORITE <FontAwesomeIcon icon="fa-solid fa-heart" />
-                </button>
+                {token ? (
+                  <button onClick={handleClickFavorite}>
+                    FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+                  </button>
+                ) : (
+                  <Link to="/user/login">
+                    <button>
+                      FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+                    </button>{" "}
+                  </Link>
+                )}
               </div>
             </div>
           </div>

@@ -308,8 +308,13 @@ header .menu button {
 .favorite {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
   color: rgb(190, 190, 190);
+}
+
+.favorite span:hover {
+  color: red;
+  cursor: pointer;
 }
 
 .slide button {
@@ -460,3 +465,39 @@ form input:focus {
 .test1:hover .test2 {
   opacity: 1;
 } */
+/* FAVORITES */
+
+ul {
+  font-size: 20px;
+  margin-left: 150px;
+  margin-top: 100px;
+}
+
+li {
+  margin: 50px;
+  list-style: square;
+  color: black;
+}
+
+.favorite-image {
+  box-shadow: 0 0 5px rgb(2, 2, 2);
+}
+
+h4 {
+  margin-top: 150px;
+  margin-left: 200px;
+
+  font-size: 26px;
+  text-decoration: overline;
+}
+/* FOOTER */
+
+.footer {
+  background-color: black;
+  color: white;
+  height: 60px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

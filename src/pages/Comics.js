@@ -6,7 +6,7 @@ import ComicsInfo from "../components/ComicsInfo";
 
 import { useEffect, useState } from "react";
 
-const Comics = () => {
+const Comics = ({ token }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -83,7 +83,9 @@ const Comics = () => {
         </div>
         <div className="comics">
           {data.results.map((comics) => {
-            return <ComicsInfo comics={comics} key={comics._id} />;
+            return (
+              <ComicsInfo token={token} comics={comics} key={comics._id} />
+            );
           })}
         </div>
       </div>

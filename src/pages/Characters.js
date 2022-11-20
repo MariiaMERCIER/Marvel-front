@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import newCharacter from "../assets/images/nico.jpeg";
 import CharacterInfo from "../components/CharacterInfo";
 
-const Characters = () => {
+const Characters = ({ token }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -86,7 +86,13 @@ const Characters = () => {
         <div className="character">
           {data.results.map((character) => {
             // console.log(character);
-            return <CharacterInfo character={character} key={character._id} />;
+            return (
+              <CharacterInfo
+                character={character}
+                token={token}
+                key={character._id}
+              />
+            );
           })}
         </div>
       </div>
