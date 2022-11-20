@@ -23,8 +23,9 @@ const CharacterInfo = ({ character }) => {
             <p>{character.description}</p>
           </div>
           <div className="favorite">
-            <button>FAVORITE</button>
-            <FontAwesomeIcon icon="fa-solid fa-heart" />
+            <button>
+              FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+            </button>
           </div>
         </div>
       </div>

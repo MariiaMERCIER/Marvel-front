@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import newCharacter from "../assets/images/nico.jpeg";
 import CharacterInfo from "../components/CharacterInfo";
 
 const Characters = () => {
@@ -44,33 +44,53 @@ const Characters = () => {
       <p>Loading ...</p>
     </div>
   ) : (
-    <div className="container">
-      <div className=" topmain">
-        {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
-        {/* <span className="faMagnifyingGlass">
+    <>
+      <div className="banner">
+        <div className="fiche-hero">
+          <img
+            src={newCharacter}
+            style={{ objectFit: "conver" }}
+            alt="newcharacter"
+          />
+          <div className="news">
+            <p>CHARACTER NEWS</p>
+            <a href="https://www.marvel.com/articles/comics/nico-minoru-runaways-midnight-suns-explained">
+              Meet Nico Minoru, Former Runaway Turned Midnight Sun
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className=" topmain">
+          {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
+          {/* <span className="faMagnifyingGlass">
         <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
       </span> */}
-        <input
-          className="search"
-          type="text"
-          placeholder="SEARCH"
-          onChange={handleSerchCharacterChange}
-        />
-        <select className="articles-page" onChange={handlePageCharacterChange}>
-          <option>Number comics/page</option>
-          <option>10</option>
-          <option>25</option>
-          <option>50</option>
-          <option>100</option>
-        </select>
+          <input
+            className="search"
+            type="text"
+            placeholder="SEARCH"
+            onChange={handleSerchCharacterChange}
+          />
+          <select
+            className="articles-page"
+            onChange={handlePageCharacterChange}
+          >
+            <option>Number comics/page</option>
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </div>
+        <div className="character">
+          {data.results.map((character) => {
+            // console.log(character);
+            return <CharacterInfo character={character} key={character._id} />;
+          })}
+        </div>
       </div>
-      <div className="character">
-        {data.results.map((character) => {
-          // console.log(character);
-          return <CharacterInfo character={character} key={character._id} />;
-        })}
-      </div>
-    </div>
+    </>
   );
 };
 export default Characters;

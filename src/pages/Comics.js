@@ -1,4 +1,5 @@
 import axios from "axios";
+import newComics from "../assets/images/comicsnew.jpeg";
 
 // import Footer from "../components/Footer";
 import ComicsInfo from "../components/ComicsInfo";
@@ -46,33 +47,47 @@ const Comics = () => {
       <p>Loading ...</p>
     </div>
   ) : (
-    <div className="container">
-      <div className=" topmain">
-        {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
-        {/* <span className="faMagnifyingGlass">
+    <>
+      <div className="banner">
+        <div className="fiche-hero">
+          <img src={newComics} alt="newcomics" />
+          <div className="news">
+            <p>COMICS NEWS</p>
+            <a href="https://www.marvel.com/articles/comics/new-sins-of-sinister-designs">
+              See How a World Controlled by Mister Sinister Influences Storm,
+              Captain America, and More in New 'Sins of Sinister' Designs
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className=" topmain">
+          {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
+          {/* <span className="faMagnifyingGlass">
         <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
       </span> */}
-        <input
-          className="search"
-          type="text"
-          placeholder="SEARCH"
-          onChange={handleSerchChange}
-        />
-        <select className="articles-page" onChange={handlePageChange}>
-          <option>Number comics/page</option>
-          <option>15</option>
-          <option>20</option>
-          <option>35</option>
-          <option>50</option>
-          <option>100</option>
-        </select>
+          <input
+            className="search"
+            type="text"
+            placeholder="SEARCH"
+            onChange={handleSerchChange}
+          />
+          <select className="articles-page" onChange={handlePageChange}>
+            <option>Number comics/page</option>
+            <option>15</option>
+            <option>20</option>
+            <option>35</option>
+            <option>50</option>
+            <option>100</option>
+          </select>
+        </div>
+        <div className="comics">
+          {data.results.map((comics) => {
+            return <ComicsInfo comics={comics} key={comics._id} />;
+          })}
+        </div>
       </div>
-      <div className="comics">
-        {data.results.map((comics) => {
-          return <ComicsInfo comics={comics} key={comics._id} />;
-        })}
-      </div>
-    </div>
+    </>
   );
 };
 

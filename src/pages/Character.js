@@ -89,7 +89,8 @@ const Character = () => {
         </div>
       </div>
       <div className="container">
-        <div className="comics">
+        <h1 className="title-character">COMICS</h1>
+        <div className="comics-character">
           {dataCOM.comics.map((elem) => {
             // console.log(elem);
             return (

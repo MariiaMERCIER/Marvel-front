@@ -55,16 +55,33 @@ header .menu button {
 .comics {
   margin-top: 50px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+
+  align-items: center;
   gap: 20px;
 }
-.comics img {
+
+.comics-character {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.comics-character img {
   width: 222px;
   height: 335px;
   object-fit: cover;
   margin-bottom: 25px;
   box-shadow: 0 10px 15px rgb(171, 171, 171);
+}
+.comics img {
+  width: 222px;
+  height: 335px;
+  object-fit: cover;
+  /* margin-bottom: 25px;
+  box-shadow: 0 10px 15px rgb(171, 171, 171); */
 }
 
 .card {
@@ -74,6 +91,57 @@ header .menu button {
   font-family: "Roboto Condensed Bold";
 }
 
+.card-comics {
+  width: 700px;
+  height: 350px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 10px 15px rgb(171, 171, 171);
+}
+
+.card-comics img {
+  width: 260x;
+  height: 320px;
+}
+
+.text {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text p {
+  font-family: "Roboto Condensed Regular";
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  color: grey;
+  -webkit-line-clamp: 13;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+.text h2 {
+  font-size: 16px;
+}
+
+.text button {
+  background-color: black;
+  border: none;
+  color: lightgrey;
+  cursor: pointer;
+}
+
+.title-character {
+  margin-top: 50px;
+  font-size: 26px;
+  text-decoration: overline;
+}
 /* .topmain span {
   position: absolute;
 
@@ -185,9 +253,12 @@ header .menu button {
   gap: 50px;
   background-color: black;
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: 0 0 5px black;
+}
+
+.fiche-hero a {
+  width: 300px;
+  font-size: 20px;
 }
 .fiche-hero img {
   width: 500px;
@@ -228,6 +299,7 @@ header .menu button {
   border: none;
   background-color: black;
   color: rgb(190, 190, 190);
+  cursor: pointer;
 }
 
 .biography .favorite {
@@ -320,23 +392,71 @@ form input:focus {
 }
 
 .banner {
-  /* position: relative; */
   height: 60vh;
-  background-image: url("./assets/images/spiderman8.jpeg");
+  background-image: url("./assets/images/spiderman9.jpeg");
   background-color: rgba(0, 0, 255, 0.3);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* .banner::before {
-  content: "";
- 
-  /* background-size: cover;
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.news p {
+  text-decoration: overline;
+  font-size: 14px;
+  color: rgb(255, 0, 0);
+}
+/* .test1 .test2 {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  opacity: 0.25;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.test1:hover .test2 {
+  opacity: 1;
+}
+
+.test1 .test2 {
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+/* .test2 button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.test3 {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.test2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #008cba;
+}
+
+.test1:hover .test3 {
+  opacity: 0.8;
+}
+.test1:hover .test2 {
+  opacity: 1;
 } */
