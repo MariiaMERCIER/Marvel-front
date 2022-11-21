@@ -9,7 +9,7 @@ const CharacterInfo = ({ character, token }) => {
     try {
       // console.log(character._id, character.name, character.description, token);
       const response = await axios.post(
-        "http://localhost:4000/favorites/character",
+        "https://site--marvel--h9xmd52lw246.code.run/favorites/character",
         {
           id: character._id,
           name: character.name,

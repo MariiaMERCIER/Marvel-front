@@ -14,13 +14,16 @@ const Characters = ({ token }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/characters", {
-          params: {
-            name: search,
-            limit: limit,
-            skip: skip,
-          },
-        });
+        const response = await axios.get(
+          "https://site--marvel--h9xmd52lw246.code.run/characters",
+          {
+            params: {
+              name: search,
+              limit: limit,
+              skip: skip,
+            },
+          }
+        );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);

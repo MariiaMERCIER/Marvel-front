@@ -8,7 +8,7 @@ const ComicsInfo = ({ comics, token }) => {
   const handleClickFavorite = async (event) => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/favorites/comics",
+        "https://site--marvel--h9xmd52lw246.code.run/favorites/comics",
         {
           id: comics._id,
           name: comics.title,

@@ -17,13 +17,16 @@ const Comics = ({ token }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/comics", {
-          params: {
-            title: search,
-            limit: limit,
-            skip: skip,
-          },
-        });
+        const response = await axios.get(
+          "https://site--marvel--h9xmd52lw246.code.run/comics",
+          {
+            params: {
+              title: search,
+              limit: limit,
+              skip: skip,
+            },
+          }
+        );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);

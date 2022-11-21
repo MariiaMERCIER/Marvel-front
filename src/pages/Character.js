@@ -20,7 +20,7 @@ const Character = ({ token }) => {
     const fetchData = async () => {
       try {
         const responseCH = await axios.get(
-          `http://localhost:4000/character/${characterId}`
+          `https://site--marvel--h9xmd52lw246.code.run/character/${characterId}`
         );
         // console.log(responseCH.data);
 
