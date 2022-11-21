@@ -18,10 +18,13 @@ const LogIn = ({ handleUserName, handleToken }) => {
         return;
       }
 
-      const response = await axios.post("http://localhost:4000/user/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://site--marvel--h9xmd52lw246.code.run/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
 
       // console.log(response.data.token);
       handleToken(response.data.token);

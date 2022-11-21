@@ -37,7 +37,7 @@ const Character = ({ token }) => {
     const fetchData = async () => {
       try {
         const responseCOM = await axios.get(
-          `http://localhost:4000/comics/${characterId}`
+          `https://site--marvel--h9xmd52lw246.code.run/comics/${characterId}`
         );
         // console.log(responseCOM.data);
         setDataCOM(responseCOM.data);
@@ -54,7 +54,7 @@ const Character = ({ token }) => {
     try {
       // console.log(token);
       const response = await axios.post(
-        "http://localhost:4000/favorites/character",
+        "https://site--marvel--h9xmd52lw246.code.run/favorites/character",
         {
           id: dataCH._id,
           name: dataCH.name,
