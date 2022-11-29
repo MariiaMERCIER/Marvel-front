@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LottieBird from "../components/Lottie";
 
 const Favorite = ({ token }) => {
   const [favorites, setFavorites] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:4000/favorites", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-      // console.log(response.data);
-      setFavorites(response.data);
+      try {
+        const watchFavorites = await axios.get(
+          "http://localhost:4000/favorites",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setFavorites(watchFavorites.data);
+        setIsLoading(true);
+      } catch (error) {
+        console.log("catchErrorWatchFavorite >>", error.message);
+      }
     };
     fetchData();
   }, [token]);
-  return (
+
+  return isLoading ? (
+    <LottieBird />
+  ) : (
     <div className="container favorite">
       <p>FAVORITE COMICS</p>
       {/* On affiche comics favoris */}

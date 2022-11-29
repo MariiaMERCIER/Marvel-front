@@ -1,7 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import newCharacter from "../assets/images/nico.jpeg";
 import CharacterInfo from "../components/CharacterInfo";
+import LottieBird from "../components/Lottie";
 
 const Characters = ({ token, email }) => {
   const [data, setData] = useState([]);
@@ -21,7 +22,7 @@ const Characters = ({ token, email }) => {
             skip: skip,
           },
         });
-        // console.log(response.data);
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -40,9 +41,7 @@ const Characters = ({ token, email }) => {
   };
 
   return isLoading ? (
-    <div className="container loading">
-      <p>Loading ...</p>
-    </div>
+    <LottieBird />
   ) : (
     <>
       <div className="banner">
@@ -60,7 +59,7 @@ const Characters = ({ token, email }) => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container" style={{ minHeight: "50vh" }}>
         <div className=" topmain">
           {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
           {/* <span className="faMagnifyingGlass">
@@ -96,37 +95,6 @@ const Characters = ({ token, email }) => {
             );
           })}
         </div>
-        {/* <div className="pages">
-          <button
-            onClick={() => {
-              setPage(1);
-            }}
-          >
-            1
-          </button>
-          <button
-            onClick={() => {
-              setPage(2);
-            }}
-          >
-            2
-          </button>
-          <button
-            onClick={() => {
-              setPage(3);
-            }}
-          >
-            3
-          </button>{" "}
-          <button
-            onClick={() => {
-              setPage(page + 1);
-            }}
-          >
-            {">"}
-          </button>
-          <span>...</span>
-        </div> */}
       </div>
     </>
   );

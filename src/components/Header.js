@@ -22,13 +22,14 @@ const Header = ({ token, handleTokenUsername, nameUser }) => {
               <Link to="/myfavorites">
                 <span>MY FAVORITES</span>
               </Link>
+
               <div className="autorisation">
                 <button
                   style={{ marginRight: 20 }}
                   onClick={() => handleTokenUsername(null)}
                   className="deconnection"
                 >
-                  DECONNEXION
+                  DISCONNECTION
                 </button>
 
                 <FontAwesomeIcon icon="fa-solid fa-user" />

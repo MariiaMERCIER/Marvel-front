@@ -21,15 +21,8 @@ header span:hover {
 }
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-}
 
-.loading {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Roboto-Bold";
+  margin: 0 auto;
 }
 
 header .container {
@@ -416,55 +409,7 @@ form input:focus {
   font-size: 14px;
   color: rgb(255, 0, 0);
 }
-/* .test1 .test2 {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: 0.5s ease;
-}
 
-.test1:hover .test2 {
-  opacity: 1;
-}
-
-.test1 .test2 {
-  background-color: rgba(0, 0, 0, 0.5);
-} */
-/* .test2 button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.test3 {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.test2 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: 0.5s ease;
-  background-color: #008cba;
-}
-
-.test1:hover .test3 {
-  opacity: 0.8;
-}
-.test1:hover .test2 {
-  opacity: 1;
-} */
 /* FAVORITES */
 
 ul {
@@ -494,7 +439,7 @@ h4 {
 }
 /* FOOTER */
 
-.footer {
+footer {
   color: white;
 
   font-size: 14px;

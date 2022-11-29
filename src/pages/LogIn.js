@@ -1,7 +1,7 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const LogIn = ({ handleTokenUsername }) => {
   const [email, setEmail] = useState("");

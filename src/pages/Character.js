@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
+import LottieBird from "../components/Lottie";
 
 import characterIndefined from "../assets/images/characterUndefined.jpeg";
 import noImageHero from "../assets/images/noImageComics.jpeg";
@@ -23,7 +23,7 @@ const Character = ({ token, email }) => {
         const responseCH = await axios.get(
           `http://localhost:4000/character/${characterId}`
         );
-        // console.log(responseCH.data);
+
         setDataCH(responseCH.data);
 
         const responseCOM = await axios.get(
@@ -45,8 +45,7 @@ const Character = ({ token, email }) => {
       navigate("/user/login");
     } else {
       try {
-        // console.log(character._id, character.name, character.description, token);
-        const response = await axios.put(
+        const registerFavorite = await axios.put(
           "http://localhost:4000/favorites/new",
 
           {
@@ -62,17 +61,13 @@ const Character = ({ token, email }) => {
           }
         );
         toast.success("You've juste added the character at favorites");
-
-        console.log(response.data);
       } catch (error) {
         console.log(error.response.data.error);
       }
     }
   };
   return isLoading ? (
-    <div className="container loading">
-      <p>Loading ...</p>
-    </div>
+    <LottieBird />
   ) : (
     <>
       <div className="banner">
@@ -100,17 +95,10 @@ const Character = ({ token, email }) => {
                 </div>
               )}
               <div className="favorite ">
-                {token ? (
-                  <button onClick={handleClickFavorite}>
-                    FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-                  </button>
-                ) : (
-                  <Link to="/user/login">
-                    <button>
-                      FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-                    </button>{" "}
-                  </Link>
-                )}
+                <button onClick={handleClickFavorite}>
+                  {" "}
+                  FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+                </button>
               </div>
             </div>
           </div>

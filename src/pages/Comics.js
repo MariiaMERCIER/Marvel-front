@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LottieBird from "../components/Lottie";
 
 import ComicsInfo from "../components/ComicsInfo";
 
 import newComics from "../assets/images/comicsnew.jpeg";
-
-// import Footer from "../components/Footer";
 
 const Comics = ({ token, email }) => {
   const [data, setData] = useState([]);
@@ -25,7 +24,7 @@ const Comics = ({ token, email }) => {
             skip: skip,
           },
         });
-        // console.log(response.data);
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -44,9 +43,7 @@ const Comics = ({ token, email }) => {
   };
 
   return isLoading ? (
-    <div className="container loading">
-      <p>Loading ...</p>
-    </div>
+    <LottieBird />
   ) : (
     <>
       <div className="banner">
@@ -61,7 +58,7 @@ const Comics = ({ token, email }) => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container" style={{ minHeight: "50vh" }}>
         <div className=" topmain">
           <input
             className="search"

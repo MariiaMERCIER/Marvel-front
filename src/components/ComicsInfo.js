@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import noImageHero from "../assets/images/noImageComics.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +12,6 @@ const ComicsInfo = ({ comics, token, email }) => {
       navigate("/user/login");
     } else {
       try {
-        // console.log(character._id, character.name, character.description, token);
         const response = await axios.put(
           "http://localhost:4000/favorites/new",
 
@@ -53,25 +51,18 @@ const ComicsInfo = ({ comics, token, email }) => {
           <h2>{comics.title}</h2>
           <p className="test">{comics.description}</p>
           <div className="favorite test2">
-            {token ? (
-              <button
-                onClick={() => {
-                  handleClickFavorite(
-                    comics.title,
-                    comics.description,
-                    comics.thumbnail
-                  );
-                }}
-              >
-                FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-              </button>
-            ) : (
-              <Link to="/user/login">
-                <button>
-                  FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-                </button>{" "}
-              </Link>
-            )}
+            <button
+              onClick={() => {
+                handleClickFavorite(
+                  comics.title,
+                  comics.description,
+                  comics.thumbnail
+                );
+              }}
+            >
+              {" "}
+              FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+            </button>
           </div>
         </div>
       </div>

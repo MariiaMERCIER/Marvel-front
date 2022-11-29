@@ -1,9 +1,8 @@
-import characterIndefined from "../assets/images/characterUndefined.jpeg";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
+import characterIndefined from "../assets/images/characterUndefined.jpeg";
 
 const CharacterInfo = ({ character, token, email }) => {
   const navigate = useNavigate();
@@ -58,27 +57,10 @@ const CharacterInfo = ({ character, token, email }) => {
           <p>{character.description}</p>
         </div>
         <div className="favorite">
-          {/* (character.thumbnail.path + "." + character.thumbnail.extension) */}
-          <Link to={`/character/${character._id}`}>
-            <span>{">>"}</span>
-          </Link>
-
           <button onClick={handleClickFavorite}>
             {" "}
             FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
           </button>
-
-          {/* {token ? (
-            <button onClick={handleClickFavorite}>
-              FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-            </button>
-          ) : (
-            <Link to="/user/login">
-              <button>
-                FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-              </button>{" "}
-            </Link>
-          )} */}
         </div>
       </div>
     </div>

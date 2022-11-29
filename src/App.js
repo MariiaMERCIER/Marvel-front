@@ -1,15 +1,16 @@
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./stylesheet.css";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMagnifyingGlass,
   faHeart,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
