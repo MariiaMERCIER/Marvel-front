@@ -3,31 +3,39 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const CharacterInfo = ({ character, token }) => {
-  const handleClickFavorite = async (event) => {
-    try {
-      // console.log(character._id, character.name, character.description, token);
-      const response = await axios.post(
-        "https://site--marvel--h9xmd52lw246.code.run/favorites/character",
-        {
-          id: character._id,
-          name: character.name,
-          description: character.description,
-          image: character.thumbnail.path + "." + character.thumbnail.extension,
-        },
+const CharacterInfo = ({ character, token, email }) => {
+  const navigate = useNavigate();
 
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
+  const handleClickFavorite = async () => {
+    if (!token) {
+      navigate("/user/login");
+    } else {
+      try {
+        // console.log(character._id, character.name, character.description, token);
+        const response = await axios.put(
+          "http://localhost:4000/favorites/new",
+
+          {
+            email: email,
+            name: character.name,
+            description: character.description,
+            avatar:
+              character.thumbnail.path + "." + character.thumbnail.extension,
           },
-        }
-      );
-      toast.success("You've juste add the character in favoris");
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        toast.success("You've juste added the character at favorites");
 
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.data.error);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.response.data.error);
+      }
     }
   };
 
@@ -54,7 +62,13 @@ const CharacterInfo = ({ character, token }) => {
           <Link to={`/character/${character._id}`}>
             <span>{">>"}</span>
           </Link>
-          {token ? (
+
+          <button onClick={handleClickFavorite}>
+            {" "}
+            FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+          </button>
+
+          {/* {token ? (
             <button onClick={handleClickFavorite}>
               FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
             </button>
@@ -64,7 +78,7 @@ const CharacterInfo = ({ character, token }) => {
                 FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
               </button>{" "}
             </Link>
-          )}
+          )} */}
         </div>
       </div>
     </div>

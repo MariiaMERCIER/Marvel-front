@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const SignUp = ({ handleUserName, handleToken }) => {
+const SignUp = ({ handleTokenUsername }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,24 +17,23 @@ const SignUp = ({ handleUserName, handleToken }) => {
         toast.error("Missing element of the form");
         return;
       }
-      // console.log(name, email, password);
-      const response = await axios.post(
-        "https://site--marvel--h9xmd52lw246.code.run/user/signup",
-        {
-          name: name,
-          email: email,
-          password: password,
-        }
+
+      const response = await axios.post("http://localhost:4000/user/signup", {
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      handleTokenUsername(
+        response.data.token,
+        response.data.name,
+        response.data.email
       );
 
-      handleToken(response.data.token);
-      handleUserName(response.data.name);
-      // console.log(token);
-      // console.log(response.data);
       navigate("/");
       toast.success("You've juste created your account");
     } catch ({ error }) {
-      console.log(error.response.data.error);
+      console.log("errorSingIn >>", error.response.data.error);
     }
   };
 

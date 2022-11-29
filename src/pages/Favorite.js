@@ -1,26 +1,48 @@
-import marvel from "../assets/images/banner-image.jpeg";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const Favorite = () => {
+const Favorite = ({ token }) => {
+  const [favorites, setFavorites] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:4000/favorites", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      // console.log(response.data);
+      setFavorites(response.data);
+    };
+    fetchData();
+  }, [token]);
   return (
-    <>
-      <div className="banner">
-        <img className="favorite-image" src={marvel} alt="marvel" />
-      </div>
-      <div className="container">
-        <div className="myfavorites">
-          <h4>MY FAVORITES</h4>
-          <ul>
-            <Link to="/favorites/comics">
-              <li>MY FAVORITE CHARACTERS</li>
-            </Link>
-            <Link to="/favorites/character">
-              <li>MY FAVORITE COMICS</li>
-            </Link>
-          </ul>
-        </div>
-      </div>
-    </>
+    <div className="container favorite">
+      <p>FAVORITE COMICS</p>
+      {/* On affiche comics favoris */}
+      {favorites.comics.map((comics) => {
+        return (
+          <div key={comics._id}>
+            <p>{comics.title}</p>
+            <p>{comics.description}</p>
+            {comics.avatar && <img src={comics.avatar} alt="comics-favorite" />}
+          </div>
+        );
+      })}{" "}
+      <p>FAVORITE CHARACTER</p>
+      {/* On affiche comics favoris  */}
+      {favorites.character.map((character) => {
+        return (
+          <div key={character._id}>
+            <p>{character.name}</p>
+            <p>{character.description}</p>
+            {character.avatar && (
+              <img src={character.avatar} alt="comics-favorite" />
+            )}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

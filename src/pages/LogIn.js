@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LogIn = ({ handleUserName, handleToken }) => {
+const LogIn = ({ handleTokenUsername }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,21 +18,21 @@ const LogIn = ({ handleUserName, handleToken }) => {
         return;
       }
 
-      const response = await axios.post(
-        "https://site--marvel--h9xmd52lw246.code.run/user/login",
-        {
-          email: email,
-          password: password,
-        }
+      const response = await axios.post("http://localhost:4000/user/login", {
+        email: email,
+        password: password,
+      });
+
+      handleTokenUsername(
+        response.data.token,
+        response.data.name,
+        response.data.email
       );
 
-      // console.log(response.data.token);
-      handleToken(response.data.token);
-      handleUserName(response.data.name);
       navigate("/");
       toast.success("Welcome in the world MARVEL");
     } catch ({ error }) {
-      console.log(error.response.message);
+      console.log("catchLogin >>", error.response.message);
     }
   };
 

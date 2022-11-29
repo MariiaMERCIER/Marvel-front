@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ token, handleToken, nameUser }) => {
+const Header = ({ token, handleTokenUsername, nameUser }) => {
   return (
     <header>
       <div className="container">
@@ -25,7 +25,7 @@ const Header = ({ token, handleToken, nameUser }) => {
               <div className="autorisation">
                 <button
                   style={{ marginRight: 20 }}
-                  onClick={() => handleToken(null)}
+                  onClick={() => handleTokenUsername(null)}
                   className="deconnection"
                 >
                   DECONNEXION

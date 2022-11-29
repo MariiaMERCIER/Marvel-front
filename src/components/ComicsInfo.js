@@ -1,32 +1,40 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import noImageHero from "../assets/images/noImageComics.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const ComicsInfo = ({ comics, token }) => {
-  const handleClickFavorite = async (event) => {
-    try {
-      const response = await axios.post(
-        "https://site--marvel--h9xmd52lw246.code.run/favorites/comics",
-        {
-          id: comics._id,
-          name: comics.title,
-          description: comics.description,
-          image: comics.thumbnail.path + "." + comics.thumbnail.extension,
-        },
+const ComicsInfo = ({ comics, token, email }) => {
+  const navigate = useNavigate();
+  const handleClickFavorite = async (title, description, thumbnail) => {
+    console.log(title, thumbnail, description);
+    if (!token) {
+      navigate("/user/login");
+    } else {
+      try {
+        // console.log(character._id, character.name, character.description, token);
+        const response = await axios.put(
+          "http://localhost:4000/favorites/new",
 
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
+          {
+            email: email,
+            title: title,
+            description: description,
+            avatar: thumbnail.path + "." + thumbnail.extension,
           },
-        }
-      );
-      toast.success("You've juste add the character in favoris");
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        toast.success("You've juste added the comics at favorites");
 
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.data.error);
+        console.log(response.data);
+      } catch (error) {
+        console.log("errorFavoritesComics >>", error.response.data.error);
+      }
     }
   };
   return (
@@ -46,7 +54,15 @@ const ComicsInfo = ({ comics, token }) => {
           <p className="test">{comics.description}</p>
           <div className="favorite test2">
             {token ? (
-              <button onClick={handleClickFavorite}>
+              <button
+                onClick={() => {
+                  handleClickFavorite(
+                    comics.title,
+                    comics.description,
+                    comics.thumbnail
+                  );
+                }}
+              >
                 FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
               </button>
             ) : (

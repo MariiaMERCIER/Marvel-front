@@ -1,81 +1,74 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import toast from "react-hot-toast";
 
 import characterIndefined from "../assets/images/characterUndefined.jpeg";
 import noImageHero from "../assets/images/noImageComics.jpeg";
 
-const Character = ({ token }) => {
+const Character = ({ token, email }) => {
   const [dataCH, setDataCH] = useState([]);
   const [dataCOM, setDataCOM] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const { characterId } = useParams();
-  // console.log(characterId);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const responseCH = await axios.get(
-          `https://site--marvel--h9xmd52lw246.code.run/character/${characterId}`
+          `http://localhost:4000/character/${characterId}`
         );
         // console.log(responseCH.data);
-
         setDataCH(responseCH.data);
-      } catch (error) {
-        console.log(error.responseCH.data);
-      }
-    };
 
-    fetchData();
-  }, [characterId]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
         const responseCOM = await axios.get(
-          `https://site--marvel--h9xmd52lw246.code.run/comics/${characterId}`
+          `http://localhost:4000/comics/${characterId}`
         );
-        // console.log(responseCOM.data);
+
         setDataCOM(responseCOM.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.responseCOM.data);
+        console.log("catchCharacter >>", error.responseCH.data);
       }
     };
 
     fetchData();
   }, [characterId]);
 
-  const handleClickFavorite = async (event) => {
-    try {
-      // console.log(token);
-      const response = await axios.post(
-        "https://site--marvel--h9xmd52lw246.code.run/favorites/character",
-        {
-          id: dataCH._id,
-          name: dataCH.name,
-          description: dataCH.description,
-          image: dataCH.thumbnail.path + "." + dataCH.thumbnail.extension,
-        },
+  const handleClickFavorite = async () => {
+    if (!token) {
+      navigate("/user/login");
+    } else {
+      try {
+        // console.log(character._id, character.name, character.description, token);
+        const response = await axios.put(
+          "http://localhost:4000/favorites/new",
 
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
+          {
+            email: email,
+            name: dataCH.name,
+            description: dataCH.description,
+            avatar: dataCH.thumbnail.path + "." + dataCH.thumbnail.extension,
           },
-        }
-      );
-      toast.success("You've juste add the character in favoris");
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        toast.success("You've juste added the character at favorites");
 
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response.data.error);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error.response.data.error);
+      }
     }
   };
-
   return isLoading ? (
     <div className="container loading">
       <p>Loading ...</p>

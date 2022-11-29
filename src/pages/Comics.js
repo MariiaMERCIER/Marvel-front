@@ -1,37 +1,35 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
+
+import ComicsInfo from "../components/ComicsInfo";
+
 import newComics from "../assets/images/comicsnew.jpeg";
 
 // import Footer from "../components/Footer";
-import ComicsInfo from "../components/ComicsInfo";
 
-import { useEffect, useState } from "react";
-
-const Comics = ({ token }) => {
+const Comics = ({ token, email }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const { page } = useState(1);
   const [limit, setLimit] = useState("");
-  const [skip, setSkip] = useState("");
+  const { skip } = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://site--marvel--h9xmd52lw246.code.run/comics",
-          {
-            params: {
-              title: search,
-              limit: limit,
-              skip: skip,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:4000/comics", {
+          params: {
+            title: search,
+            limit: limit,
+            skip: skip,
+          },
+        });
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.data.message);
+        console.log("catch comics >>:", error.data.message);
       }
     };
     fetchData();
@@ -65,10 +63,6 @@ const Comics = ({ token }) => {
       </div>
       <div className="container">
         <div className=" topmain">
-          {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
-          {/* <span className="faMagnifyingGlass">
-        <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-      </span> */}
           <input
             className="search"
             type="text"
@@ -76,7 +70,7 @@ const Comics = ({ token }) => {
             onChange={handleSerchChange}
           />
           <select className="articles-page" onChange={handlePageChange}>
-            <option>Number comics/page</option>
+            <option>Number/page</option>
             <option>15</option>
             <option>20</option>
             <option>35</option>
@@ -87,41 +81,15 @@ const Comics = ({ token }) => {
         <div className="comics">
           {data.results.map((comics) => {
             return (
-              <ComicsInfo token={token} comics={comics} key={comics._id} />
+              <ComicsInfo
+                token={token}
+                comics={comics}
+                email={email}
+                key={comics._id}
+              />
             );
           })}
         </div>
-        {/* <div className="pages">
-          <button
-            onClick={() => {
-              setPage(1);
-            }}
-          >
-            1
-          </button>
-          <button
-            onClick={() => {
-              setPage(2);
-            }}
-          >
-            2
-          </button>
-          <button
-            onClick={() => {
-              setPage(3);
-            }}
-          >
-            3
-          </button>{" "}
-          <button
-            onClick={() => {
-              setPage(page + 1);
-            }}
-          >
-            {">"}
-          </button>
-          <span>...</span>
-        </div> */}
       </div>
     </>
   );

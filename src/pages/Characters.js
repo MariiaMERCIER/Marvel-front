@@ -3,32 +3,29 @@ import { useEffect, useState } from "react";
 import newCharacter from "../assets/images/nico.jpeg";
 import CharacterInfo from "../components/CharacterInfo";
 
-const Characters = ({ token }) => {
+const Characters = ({ token, email }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const { page } = useState(1);
   const [limit, setLimit] = useState("");
-  const [skip, setSkip] = useState("");
+  const { skip } = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://site--marvel--h9xmd52lw246.code.run/characters",
-          {
-            params: {
-              name: search,
-              limit: limit,
-              skip: skip,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:4000/characters", {
+          params: {
+            name: search,
+            limit: limit,
+            skip: skip,
+          },
+        });
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.data.message);
+        console.log("catchCharacters >>", error.data.message);
       }
     };
 
@@ -79,7 +76,7 @@ const Characters = ({ token }) => {
             className="articles-page"
             onChange={handlePageCharacterChange}
           >
-            <option>Number comics/page</option>
+            <option>Number/page</option>
             <option>10</option>
             <option>25</option>
             <option>50</option>
@@ -94,6 +91,7 @@ const Characters = ({ token }) => {
                 character={character}
                 token={token}
                 key={character._id}
+                email={email}
               />
             );
           })}

@@ -17,11 +17,9 @@ import Footer from "./components/Footer";
 import Comics from "./pages/Comics";
 import Characters from "./pages/Characters";
 import Character from "./pages/Character";
-import SignUp from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Favorite from "./pages/Favorite";
-import FavoriteComics from "./pages/FavoriteComics";
-import FavoriteCharacter from "./pages/FavoriteCharacter";
 
 library.add(faMagnifyingGlass, faHeart, faUser);
 
@@ -30,31 +28,34 @@ const App = () => {
   const [idCharacter, setIdCharacter] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [nameUser, setNameUser] = useState(Cookies.get("nameUser") || null);
+  const [email, setEmail] = useState(Cookies.get("email") || null);
 
-  const handleToken = (token) => {
-    if (token) {
+  const handleTokenUsername = (token, nameUser, email) => {
+    if (token && nameUser && email) {
+      setNameUser(nameUser);
       setToken(token);
+      setEmail(email);
       Cookies.set("token", token, { expires: 2 });
+      Cookies.set("nameUser", nameUser, { expires: 2 });
+      Cookies.set("email", email, { expires: 2 });
     } else {
       setToken(null);
-      Cookies.remove("token");
-    }
-  };
-
-  const handleUserName = (nameUser) => {
-    if (nameUser) {
-      setNameUser(nameUser);
-      Cookies.set("nameUser", nameUser, { expires: 2 });
-    } else {
       setNameUser(null);
+      setEmail(null);
+      Cookies.remove("token");
       Cookies.remove("nameUser");
+      Cookies.remove("email");
     }
   };
 
   return (
     <Router>
       <Toaster />
-      <Header token={token} handleToken={handleToken} nameUser={nameUser} />
+      <Header
+        token={token}
+        handleTokenUsername={handleTokenUsername}
+        nameUser={nameUser}
+      />
       <Routes>
         <Route
           path="/comics"
@@ -63,6 +64,7 @@ const App = () => {
               token={token}
               idComics={idComics}
               setIdComics={setIdComics}
+              email={email}
             />
           }
         />
@@ -73,6 +75,7 @@ const App = () => {
               token={token}
               setIdCharacter={setIdCharacter}
               idCharacter={idCharacter}
+              email={email}
             />
           }
         />
@@ -83,6 +86,7 @@ const App = () => {
               token={token}
               setIdCharacter={setIdCharacter}
               idCharacter={idCharacter}
+              email={email}
             />
           }
         />
@@ -91,10 +95,9 @@ const App = () => {
           element={
             <SignUp
               token={token}
-              setToken={setToken}
               nameUser={nameUser}
-              handleToken={handleToken}
-              handleUserName={handleUserName}
+              email={email}
+              handleTokenUsername={handleTokenUsername}
             />
           }
         />
@@ -103,16 +106,13 @@ const App = () => {
           element={
             <LogIn
               token={token}
-              setToken={setToken}
               nameUser={nameUser}
-              handleToken={handleToken}
-              handleUserName={handleUserName}
+              email={email}
+              handleTokenUsername={handleTokenUsername}
             />
           }
         />
-        <Route path="/myfavorites" element={<Favorite />} />
-        <Route path="/favorites/comics" element={<FavoriteComics />} />
-        <Route path="/favorites/character" element={<FavoriteCharacter />} />
+        <Route path="/myfavorites" element={<Favorite token={token} />} />
       </Routes>
       <Footer />
     </Router>

@@ -198,7 +198,7 @@ header .menu button {
 .character {
   display: flex;
   flex-wrap: wrap;
-
+  margin-bottom: 30px;
   margin-top: 50px;
   gap: 18px;
 }
@@ -398,7 +398,7 @@ form input:focus {
 
 .banner {
   height: 60vh;
-  background-image: url("./assets/images/spiderman9.jpeg");
+  background-image: url("./assets/images/spiderman.jpeg");
   background-color: rgba(0, 0, 255, 0.3);
   width: 100%;
   display: flex;
