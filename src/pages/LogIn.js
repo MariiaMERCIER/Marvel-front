@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Input from "../components/Input";
 
 const LogIn = ({ handleTokenUsername }) => {
   const [email, setEmail] = useState("");
@@ -40,21 +41,17 @@ const LogIn = ({ handleTokenUsername }) => {
     <div className="signin">
       <div className="container">
         <form onSubmit={handleChangeLogIn}>
-          <input
+          <Input
             type="email"
             placeholder="john@mail.ru"
             value={email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-            }}
+            setFunction={setEmail}
           />
-          <input
+          <Input
             type="password"
             placeholder="azerty"
             value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
+            setFunction={setPassword}
           />
           <button>JOIN US</button>
         </form>

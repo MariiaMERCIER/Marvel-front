@@ -3,6 +3,8 @@ import axios from "axios";
 import newCharacter from "../assets/images/nico.jpeg";
 import CharacterInfo from "../components/CharacterInfo";
 import LottieBird from "../components/Lottie";
+import ToolBar from "../components/ToolBar";
+import Banner from "../components/Banner";
 
 const Characters = ({ token, email }) => {
   const [data, setData] = useState([]);
@@ -33,58 +35,37 @@ const Characters = ({ token, email }) => {
     fetchData();
   }, [search, skip, limit, page]);
 
-  const handlePageCharacterChange = (event) => {
+  const handlePageChange = (event) => {
     setLimit(event.target.value);
   };
-  const handleSerchCharacterChange = (event) => {
+  const handleSerchChange = (event) => {
     setSearch(event.target.value);
   };
+
+  const title = "CHARACTER NEWS";
+  const link =
+    "https://www.marvel.com/articles/comics/nico-minoru-runaways-midnight-suns-explained";
+  const description = " Meet Nico Minoru, Former Runaway Turned Midnight Sun";
 
   return isLoading ? (
     <LottieBird />
   ) : (
     <>
-      <div className="banner">
-        <div className="fiche-hero">
-          <img
-            src={newCharacter}
-            style={{ objectFit: "conver" }}
-            alt="newcharacter"
-          />
-          <div className="news">
-            <p>CHARACTER NEWS</p>
-            <a href="https://www.marvel.com/articles/comics/nico-minoru-runaways-midnight-suns-explained">
-              Meet Nico Minoru, Former Runaway Turned Midnight Sun
-            </a>
-          </div>
-        </div>
-      </div>
+      <Banner
+        title={title}
+        news={newCharacter}
+        link={link}
+        description={description}
+      />
+
       <div className="container" style={{ minHeight: "50vh" }}>
-        <div className=" topmain">
-          {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
-          {/* <span className="faMagnifyingGlass">
-        <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-      </span> */}
-          <input
-            className="search"
-            type="text"
-            placeholder="SEARCH"
-            onChange={handleSerchCharacterChange}
-          />
-          <select
-            className="articles-page"
-            onChange={handlePageCharacterChange}
-          >
-            <option>Number/page</option>
-            <option>10</option>
-            <option>25</option>
-            <option>50</option>
-            <option>100</option>
-          </select>
-        </div>
+        <ToolBar
+          handlePageChange={handlePageChange}
+          handleSerchChange={handleSerchChange}
+        />
+
         <div className="character">
           {data.results.map((character) => {
-            // console.log(character);
             return (
               <CharacterInfo
                 character={character}
@@ -95,6 +76,7 @@ const Characters = ({ token, email }) => {
             );
           })}
         </div>
+        <button>SEE MORE</button>
       </div>
     </>
   );

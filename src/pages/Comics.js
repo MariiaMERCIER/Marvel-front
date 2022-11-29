@@ -5,6 +5,8 @@ import LottieBird from "../components/Lottie";
 import ComicsInfo from "../components/ComicsInfo";
 
 import newComics from "../assets/images/comicsnew.jpeg";
+import ToolBar from "../components/ToolBar";
+import Banner from "../components/Banner";
 
 const Comics = ({ token, email }) => {
   const [data, setData] = useState([]);
@@ -42,39 +44,28 @@ const Comics = ({ token, email }) => {
     setLimit(event.target.value);
   };
 
+  const title = "COMICS NEWS";
+  const link =
+    "https://www.marvel.com/articles/comics/new-sins-of-sinister-designs";
+  const description =
+    "See How a World Controlled by Mister Sinister Influences Storm, Captain America, and More in New Sins of Sinister Designs";
+
   return isLoading ? (
     <LottieBird />
   ) : (
     <>
-      <div className="banner">
-        <div className="fiche-hero">
-          <img src={newComics} alt="newcomics" />
-          <div className="news">
-            <p>COMICS NEWS</p>
-            <a href="https://www.marvel.com/articles/comics/new-sins-of-sinister-designs">
-              See How a World Controlled by Mister Sinister Influences Storm,
-              Captain America, and More in New 'Sins of Sinister' Designs
-            </a>
-          </div>
-        </div>
-      </div>
+      <Banner
+        title={title}
+        news={newComics}
+        link={link}
+        description={description}
+      />
+
       <div className="container" style={{ minHeight: "50vh" }}>
-        <div className=" topmain">
-          <input
-            className="search"
-            type="text"
-            placeholder="SEARCH"
-            onChange={handleSerchChange}
-          />
-          <select className="articles-page" onChange={handlePageChange}>
-            <option>Number/page</option>
-            <option>15</option>
-            <option>20</option>
-            <option>35</option>
-            <option>50</option>
-            <option>100</option>
-          </select>
-        </div>
+        <ToolBar
+          handlePageChange={handlePageChange}
+          handleSerchChange={handleSerchChange}
+        />
         <div className="comics">
           {data.results.map((comics) => {
             return (

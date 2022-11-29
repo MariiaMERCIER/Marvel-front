@@ -73,8 +73,6 @@ header .menu button {
   width: 222px;
   height: 335px;
   object-fit: cover;
-  /* margin-bottom: 25px;
-  box-shadow: 0 10px 15px rgb(171, 171, 171); */
 }
 
 .card {
@@ -344,7 +342,7 @@ header button:hover {
   cursor: pointer;
 }
 
-.signin {
+.signup {
   width: 100%;
   min-height: 100vh;
   background-color: black;
