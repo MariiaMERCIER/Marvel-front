@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import Input from "../components/Input";
 
 const LogIn = ({ handleTokenUsername }) => {
   const [email, setEmail] = useState("");
@@ -15,6 +14,8 @@ const LogIn = ({ handleTokenUsername }) => {
 
     try {
       if (!email || !password) {
+        console.log(email);
+        console.log(password);
         toast.error("Missing element of the form");
         return;
       }
@@ -38,20 +39,24 @@ const LogIn = ({ handleTokenUsername }) => {
   };
 
   return (
-    <div className="signin">
+    <div className="signup">
       <div className="container">
         <form onSubmit={handleChangeLogIn}>
-          <Input
+          <input
             type="email"
             placeholder="john@mail.ru"
             value={email}
-            setFunction={setEmail}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
           />
-          <Input
+          <input
             type="password"
             placeholder="azerty"
             value={password}
-            setFunction={setPassword}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
           />
           <button>JOIN US</button>
         </form>

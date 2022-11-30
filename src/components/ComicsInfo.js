@@ -40,17 +40,17 @@ const ComicsInfo = ({ comics, token, email }) => {
       <div className="card-comics">
         {comics.thumbnail.path ===
         "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
-          <img className="test3" src={noImageHero} alt="comics" />
+          <img src={noImageHero} alt="comics" />
         ) : (
           <img
             src={comics.thumbnail.path + "." + comics.thumbnail.extension}
             alt="comics"
           />
         )}
-        <div className="text">
+        <div className="text-comics">
           <h2>{comics.title}</h2>
-          <p className="test">{comics.description}</p>
-          <div className="favorite test2">
+          <p>{comics.description}</p>
+          <div>
             <button
               onClick={() => {
                 handleClickFavorite(

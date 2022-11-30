@@ -98,14 +98,14 @@ header .menu button {
   height: 320px;
 }
 
-.text {
+.text-comics {
   width: 350px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.text p {
+.text-comics p {
   font-family: "Roboto Condensed Regular";
   letter-spacing: 0.5px;
   font-size: 14px;
@@ -117,11 +117,11 @@ header .menu button {
   letter-spacing: 1px;
 }
 
-.text h2 {
+.text-comics h2 {
   font-size: 16px;
 }
 
-.text button {
+.text-comics button {
   background-color: black;
   border: none;
   color: lightgrey;
@@ -133,18 +133,7 @@ header .menu button {
   font-size: 26px;
   text-decoration: overline;
 }
-/* .topmain span {
-  position: absolute;
-
-  display: block;
-
-  text-align: center;
-  pointer-events: none;
-  left: 250px;
-  top: 90px;
-  color: #aaa;
-} */
-
+/* TOOL BAR */
 .topmain {
   display: flex;
   justify-content: space-between;
@@ -173,6 +162,7 @@ header .menu button {
   margin-top: 40px;
   border-bottom: 2px solid grey;
 }
+
 .search {
   border: none;
   font-family: "Roboto Condensed Regular";

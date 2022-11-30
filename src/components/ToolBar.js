@@ -1,6 +1,6 @@
 import React from "react";
 
-const ToolBar = ({ handlePageChange, handleSerchChange }) => {
+const ToolBar = ({ handleSelectChange, handleSerchChange }) => {
   return (
     <div className=" topmain">
       <input
@@ -9,7 +9,7 @@ const ToolBar = ({ handlePageChange, handleSerchChange }) => {
         placeholder="SEARCH"
         onChange={handleSerchChange}
       />
-      <select className="articles-page" onChange={handlePageChange}>
+      <select className="articles-page" onChange={handleSelectChange}>
         <option>Number/page</option>
         <option>10</option>
         <option>25</option>

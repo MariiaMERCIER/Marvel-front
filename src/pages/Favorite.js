@@ -19,7 +19,7 @@ const Favorite = ({ token }) => {
         );
 
         setFavorites(watchFavorites.data);
-        setIsLoading(true);
+        setIsLoading(false);
       } catch (error) {
         console.log("catchErrorWatchFavorite >>", error.message);
       }
@@ -33,15 +33,21 @@ const Favorite = ({ token }) => {
     <div className="container favorite">
       <p>FAVORITE COMICS</p>
       {/* On affiche comics favoris */}
-      {favorites.comics.map((comics) => {
-        return (
-          <div key={comics._id}>
-            <p>{comics.title}</p>
-            <p>{comics.description}</p>
-            {comics.avatar && <img src={comics.avatar} alt="comics-favorite" />}
-          </div>
-        );
-      })}{" "}
+      <div className="comics">
+        {favorites.comics.map((comics) => {
+          return (
+            <div className="card-comics" key={comics._id}>
+              {comics.avatar && (
+                <img src={comics.avatar} alt="comics-favorite" />
+              )}
+              <div className="text-comics">
+                <h2>{comics.title}</h2>
+                <p>{comics.description}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
       <p>FAVORITE CHARACTER</p>
       {/* On affiche comics favoris  */}
       {favorites.character.map((character) => {

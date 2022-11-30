@@ -40,7 +40,7 @@ const Comics = ({ token, email }) => {
     setSearch(event.target.value);
   };
 
-  const handlePageChange = (event) => {
+  const handleSelectChange = (event) => {
     setLimit(event.target.value);
   };
 
@@ -63,7 +63,7 @@ const Comics = ({ token, email }) => {
 
       <div className="container" style={{ minHeight: "50vh" }}>
         <ToolBar
-          handlePageChange={handlePageChange}
+          handleSelectChange={handleSelectChange}
           handleSerchChange={handleSerchChange}
         />
         <div className="comics">
@@ -78,6 +78,7 @@ const Comics = ({ token, email }) => {
             );
           })}
         </div>
+        <button>SEE MORE</button>
       </div>
     </>
   );
