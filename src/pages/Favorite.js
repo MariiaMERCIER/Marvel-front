@@ -49,18 +49,20 @@ const Favorite = ({ token }) => {
         })}
       </div>
       <p>FAVORITE CHARACTER</p>
-      {/* On affiche comics favoris  */}
-      {favorites.character.map((character) => {
-        return (
-          <div key={character._id}>
-            <p>{character.name}</p>
-            <p>{character.description}</p>
-            {character.avatar && (
-              <img src={character.avatar} alt="comics-favorite" />
-            )}
-          </div>
-        );
-      })}
+      <div className="character">
+        {/* On affiche comics favoris  */}
+        {favorites.character.map((character) => {
+          return (
+            <div className="card-character" key={character._id}>
+              <p>{character.name}</p>
+              <p>{character.description}</p>
+              {character.avatar && (
+                <img src={character.avatar} alt="comics-favorite" />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

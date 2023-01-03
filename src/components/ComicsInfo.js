@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import noImageHero from "../assets/images/noImageComics.jpeg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const ComicsInfo = ({ comics, token, email }) => {
+  const [clicked, setClicked] = useState(false);
+
   const navigate = useNavigate();
   const handleClickFavorite = async (title, description, thumbnail) => {
     console.log(title, thumbnail, description);
@@ -27,11 +32,17 @@ const ComicsInfo = ({ comics, token, email }) => {
             },
           }
         );
+        setClicked(true);
         toast.success("You've juste added the comics at favorites");
-
-        console.log(response.data);
       } catch (error) {
-        console.log("errorFavoritesComics >>", error.response.data.error);
+        console.log("errorFavoritesComics >>", error.response.data.message);
+        console.log(error.response.data.message);
+        if (
+          error.response.data.message ===
+          "This comics has already been in your favorites"
+        ) {
+          toast.error("You have already had this comics in your favoris");
+        }
       }
     }
   };
@@ -60,8 +71,10 @@ const ComicsInfo = ({ comics, token, email }) => {
                 );
               }}
             >
-              {" "}
-              FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+              <FontAwesomeIcon
+                icon="fa-solid fa-heart"
+                className={clicked ? "red" : "grey"}
+              />
             </button>
           </div>
         </div>

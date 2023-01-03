@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
 import characterIndefined from "../assets/images/characterUndefined.jpeg";
+import { useState } from "react";
 
 const CharacterInfo = ({ character, token, email }) => {
+  const [clicked, setClicked] = useState(false);
+
   const navigate = useNavigate();
 
   const handleClickFavorite = async () => {
@@ -12,7 +15,6 @@ const CharacterInfo = ({ character, token, email }) => {
       navigate("/user/login");
     } else {
       try {
-        // console.log(character._id, character.name, character.description, token);
         const response = await axios.put(
           "http://localhost:4000/favorites/new",
 
@@ -29,11 +31,20 @@ const CharacterInfo = ({ character, token, email }) => {
             },
           }
         );
+        setClicked(true);
         toast.success("You've juste added the character at favorites");
-
-        console.log(response.data);
       } catch (error) {
-        console.log(error.response.data.error);
+        console.log(
+          "errorFavoritesCharacter Card>>",
+          error.response.data.message
+        );
+
+        if (
+          error.response.data.message ===
+          "This character has already been in your favorites"
+        ) {
+          toast.error("You have already had this character in your favoris");
+        }
       }
     }
   };
@@ -58,9 +69,14 @@ const CharacterInfo = ({ character, token, email }) => {
         </div>
         <div className="favorite">
           <button onClick={handleClickFavorite}>
-            {" "}
-            FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
-          </button>
+            <FontAwesomeIcon
+              icon="fa-solid fa-heart"
+              className={clicked ? "red" : "grey"}
+            />
+          </button>{" "}
+          <Link to={`/character/${character._id}`}>
+            <span style={{ fontSize: 20 }}>{">>"}</span>
+          </Link>
         </div>
       </div>
     </div>

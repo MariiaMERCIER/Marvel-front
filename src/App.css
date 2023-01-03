@@ -306,11 +306,20 @@ header .menu button {
   text-align: center;
   cursor: pointer;
 }
-.favorite:hover {
+.fa-heart {
+  font-size: 20px;
+}
+
+.fa-heart:hover {
   color: rgb(255, 7, 7);
 }
-.favorite button:hover {
+
+.red {
   color: rgb(255, 7, 7);
+}
+
+.grey {
+  color: rgb(190, 190, 190);
 }
 
 header button {
@@ -424,6 +433,25 @@ h4 {
 
   font-size: 26px;
   text-decoration: overline;
+}
+
+.favorite {
+  display: flex;
+  flex-direction: column;
+}
+.favorites-character {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.favorites-character div {
+  width: 150px;
+  height: 300px;
+}
+
+.favorites-character img {
+  width: 200px;
+  height: 300px;
 }
 /* FOOTER */
 

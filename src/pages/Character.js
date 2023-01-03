@@ -13,6 +13,7 @@ const Character = ({ token, email }) => {
   const [dataCH, setDataCH] = useState([]);
   const [dataCOM, setDataCOM] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   const { characterId } = useParams();
   const navigate = useNavigate();
@@ -60,9 +61,17 @@ const Character = ({ token, email }) => {
             },
           }
         );
+        setClicked(true);
         toast.success("You've juste added the character at favorites");
       } catch (error) {
-        console.log(error.response.data.error);
+        console.log("errorFavoritesCharacter >>", error.response.data.message);
+
+        if (
+          error.response.data.message ===
+          "This character has already been in your favorites"
+        ) {
+          toast.error("You have already had this character in your favoris");
+        }
       }
     }
   };
@@ -96,8 +105,10 @@ const Character = ({ token, email }) => {
               )}
               <div className="favorite ">
                 <button onClick={handleClickFavorite}>
-                  {" "}
-                  FAVORITE {""} <FontAwesomeIcon icon="fa-solid fa-heart" />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-heart"
+                    className={clicked ? "red" : "grey"}
+                  />
                 </button>
               </div>
             </div>
@@ -108,7 +119,6 @@ const Character = ({ token, email }) => {
         <h1 className="title-character">COMICS</h1>
         <div className="comics-character">
           {dataCOM.comics.map((elem) => {
-            // console.log(elem);
             return (
               <div className="card" key={elem._id}>
                 {elem.thumbnail.path ===
