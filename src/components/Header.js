@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Header = ({ token, handleTokenUsername, nameUser }) => {
   return (
     <header>
-      <div className="container center">
+      <div className="container center responsive">
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
@@ -33,8 +33,11 @@ const Header = ({ token, handleTokenUsername, nameUser }) => {
                 </button>
                 <FontAwesomeIcon icon="fa-solid fa-user" />
                 <span style={{ marginLeft: 10 }}>{nameUser}</span>
-                <div classname="show" onClick={() => handleTokenUsername(null)}>
-                  <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
+                <div onClick={() => handleTokenUsername(null)}>
+                  <FontAwesomeIcon
+                    className="show"
+                    icon="fa-solid fa-right-from-bracket"
+                  />
                 </div>
               </div>
             </>
