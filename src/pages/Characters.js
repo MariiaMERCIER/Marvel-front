@@ -12,7 +12,6 @@ const Characters = ({ token, email }) => {
   const [search, setSearch] = useState("");
   const { page } = useState(1);
   const [limit, setLimit] = useState("");
-  const [skip, setSkip] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +20,6 @@ const Characters = ({ token, email }) => {
           params: {
             name: search,
             limit: limit,
-            skip: skip,
           },
         });
 
@@ -33,7 +31,7 @@ const Characters = ({ token, email }) => {
     };
 
     fetchData();
-  }, [search, skip, limit, page]);
+  }, [search, limit, page]);
 
   const handleSelectChange = (event) => {
     setLimit(event.target.value);
@@ -42,9 +40,6 @@ const Characters = ({ token, email }) => {
     setSearch(event.target.value);
   };
 
-  const handlePageChange = (event) => {
-    setSkip(limit);
-  };
   const title = "CHARACTER NEWS";
   const link =
     "https://www.marvel.com/articles/comics/nico-minoru-runaways-midnight-suns-explained";
@@ -79,7 +74,6 @@ const Characters = ({ token, email }) => {
             );
           })}
         </div>
-        <button onClick={handlePageChange}>SEE MORE</button>
       </div>
     </>
   );

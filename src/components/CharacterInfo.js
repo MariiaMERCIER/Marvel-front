@@ -67,15 +67,15 @@ const CharacterInfo = ({ character, token, email }) => {
         <div>
           <p>{character.description}</p>
         </div>
-        <div className="favorite">
-          <button onClick={handleClickFavorite}>
+        <div className="favorite ">
+          <span onClick={handleClickFavorite}>
             <FontAwesomeIcon
               icon="fa-solid fa-heart"
               className={clicked ? "red" : "grey"}
             />
-          </button>{" "}
+          </span>
           <Link to={`/character/${character._id}`}>
-            <span style={{ fontSize: 20 }}>{">>"}</span>
+            <span style={{ fontSize: 18 }}>{">>"}</span>
           </Link>
         </div>
       </div>

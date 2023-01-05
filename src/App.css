@@ -119,6 +119,7 @@ header .menu button {
 
 .text-comics h2 {
   font-size: 16px;
+  font-family: "Roboto Condensed Bold";
 }
 
 .text-comics button {
@@ -155,10 +156,9 @@ header .menu button {
 
 .topmain input {
   position: relative;
-
   width: 50%;
   height: 40px;
-  /* padding-left: 40px; */
+
   margin-top: 40px;
   border-bottom: 2px solid grey;
 }
@@ -307,9 +307,11 @@ header .menu button {
   cursor: pointer;
 }
 .fa-heart {
-  font-size: 20px;
+  font-size: 18px;
 }
-
+.favorite button {
+  width: 20px;
+}
 .fa-heart:hover {
   color: rgb(255, 7, 7);
 }
@@ -435,24 +437,90 @@ h4 {
   text-decoration: overline;
 }
 
-.favorite {
-  display: flex;
-  flex-direction: column;
-}
 .favorites-character {
   display: flex;
   flex-wrap: wrap;
 }
 
 .favorites-character div {
-  width: 150px;
-  height: 300px;
+  width: 250px;
+  height: 400px;
 }
 
 .favorites-character img {
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 350px;
 }
+
+.comics-fav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.white {
+  font-size: 18px;
+  color: white;
+  text-align: end;
+  cursor: pointer;
+}
+
+.white:hover {
+  color: red;
+}
+
+.card-comics-fav {
+  box-shadow: 0 10px 15px rgb(171 171 171);
+}
+.card-comics-fav div {
+  box-sizing: border-box;
+
+  padding-right: 30px;
+  width: 580px;
+  height: 300px;
+  background-color: black;
+  color: white;
+  display: flex;
+}
+
+.card-comics-fav span {
+  margin-top: 28px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.card-comics-fav span:hover {
+  color: red;
+}
+.card-comics-fav img {
+  width: 220px;
+  height: 300px;
+  object-fit: cover;
+}
+.card-comics-fav h2,
+.card-comics-fav p {
+  margin-top: 30px;
+
+  -webkit-line-clamp: 15;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.card-comics-fav img {
+  margin-right: 30px;
+}
+
+h1 {
+  font-size: 24px;
+  text-decoration: overline;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.fav {
+  margin-top: 0;
+}
+
 /* FOOTER */
 
 footer {
