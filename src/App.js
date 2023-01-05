@@ -10,6 +10,7 @@ import {
   faMagnifyingGlass,
   faHeart,
   faUser,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "./components/Header";
@@ -22,7 +23,7 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import Favorite from "./pages/Favorite";
 
-library.add(faMagnifyingGlass, faHeart, faUser);
+library.add(faMagnifyingGlass, faHeart, faUser, faRightFromBracket);
 
 const App = () => {
   const [idComics, setIdComics] = useState("");

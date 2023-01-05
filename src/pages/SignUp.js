@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -65,8 +65,12 @@ const SignUp = ({ handleTokenUsername }) => {
               setPassword(event.target.value);
             }}
           />
-
-          <button>JOIN US</button>
+          <div>
+            <button>JOIN US</button>
+            <Link to="/user/login">
+              <p className="link">You have already an account?</p>
+            </Link>
+          </div>
         </form>
       </div>
     </div>

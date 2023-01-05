@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Header = ({ token, handleTokenUsername, nameUser }) => {
   return (
     <header>
-      <div className="container">
+      <div className="container center">
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
@@ -27,24 +27,28 @@ const Header = ({ token, handleTokenUsername, nameUser }) => {
                 <button
                   style={{ marginRight: 20 }}
                   onClick={() => handleTokenUsername(null)}
-                  className="deconnection"
+                  className="deconnection hidden"
                 >
                   DISCONNECTION
                 </button>
-
                 <FontAwesomeIcon icon="fa-solid fa-user" />
-
                 <span style={{ marginLeft: 10 }}>{nameUser}</span>
+                <div classname="show" onClick={() => handleTokenUsername(null)}>
+                  <FontAwesomeIcon icon="fa-solid fa-right-from-bracket" />
+                </div>
               </div>
             </>
           ) : (
             <div className="autorisation">
               <Link to="/user/signup">
-                <button>SIGN IN </button>
+                <button className="hidden">SIGN IN </button>
               </Link>
-              <span>|</span>
+              <span className="hidden">|</span>
               <Link to="/user/login">
-                <button>LOG IN</button>
+                <button className="hidden">LOG IN</button>
+              </Link>
+              <Link to="/user/login">
+                <FontAwesomeIcon className="show" icon="fa-solid fa-user" />
               </Link>
             </div>
           )}
