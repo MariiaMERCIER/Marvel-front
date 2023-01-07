@@ -15,7 +15,6 @@ import {
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 import Comics from "./pages/Comics";
 import Characters from "./pages/Characters";
 import Character from "./pages/Character";
