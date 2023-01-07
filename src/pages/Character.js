@@ -22,13 +22,13 @@ const Character = ({ token, email }) => {
     const fetchData = async () => {
       try {
         const responseCH = await axios.get(
-          `http://localhost:4000/character/${characterId}`
+          `https://site--marvel--h9xmd52lw246.code.run/character/${characterId}`
         );
 
         setDataCH(responseCH.data);
 
         const responseCOM = await axios.get(
-          `http://localhost:4000/comics/${characterId}`
+          `https://site--marvel--h9xmd52lw246.code.run/comics/${characterId}`
         );
 
         setDataCOM(responseCOM.data);
@@ -47,7 +47,7 @@ const Character = ({ token, email }) => {
     } else {
       try {
         const registerFavorite = await axios.put(
-          "http://localhost:4000/favorites/new",
+          "https://site--marvel--h9xmd52lw246.code.run/favorites/new",
 
           {
             email: email,

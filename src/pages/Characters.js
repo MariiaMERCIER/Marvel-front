@@ -16,12 +16,15 @@ const Characters = ({ token, email }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/characters", {
-          params: {
-            name: search,
-            limit: limit,
-          },
-        });
+        const response = await axios.get(
+          "https://site--marvel--h9xmd52lw246.code.run/characters",
+          {
+            params: {
+              name: search,
+              limit: limit,
+            },
+          }
+        );
 
         setData(response.data);
         setIsLoading(false);

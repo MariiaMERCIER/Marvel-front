@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import LottieBird from "../components/Lottie";
 
@@ -11,7 +11,7 @@ const Favorite = ({ token }) => {
     const fetchData = async () => {
       try {
         const watchFavorites = await axios.get(
-          "http://localhost:4000/favorites",
+          "https://site--marvel--h9xmd52lw246.code.run/favorites",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -31,7 +31,7 @@ const Favorite = ({ token }) => {
   const hadleDeleteCharacter = async (name) => {
     try {
       const comicsFavorites = await axios.put(
-        "http://localhost:4000/favorite/delete",
+        "https://site--marvel--h9xmd52lw246.code.run/favorite/delete",
         { name: name },
         {
           headers: {
@@ -47,7 +47,7 @@ const Favorite = ({ token }) => {
   const handleDeleteComics = async (title) => {
     try {
       const comicsFavorites = await axios.put(
-        "http://localhost:4000/favorite/delete",
+        "https://site--marvel--h9xmd52lw246.code.run/favorite/delete",
         { title: title },
         {
           headers: {

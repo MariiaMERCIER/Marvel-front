@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+
 import axios from "axios";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
+
 import characterIndefined from "../assets/images/characterUndefined.jpeg";
-import { useState } from "react";
 
 const CharacterInfo = ({ character, token, email }) => {
   const [clicked, setClicked] = useState(false);
@@ -16,7 +19,7 @@ const CharacterInfo = ({ character, token, email }) => {
     } else {
       try {
         const response = await axios.put(
-          "http://localhost:4000/favorites/new",
+          "https://site--marvel--h9xmd52lw246.code.run/favorites/new",
 
           {
             email: email,

@@ -18,7 +18,7 @@ const ComicsInfo = ({ comics, token, email }) => {
     } else {
       try {
         const response = await axios.put(
-          "http://localhost:4000/favorites/new",
+          "https://site--marvel--h9xmd52lw246.code.run/favorites/new",
 
           {
             email: email,

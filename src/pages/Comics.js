@@ -19,13 +19,16 @@ const Comics = ({ token, email }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/comics", {
-          params: {
-            title: search,
-            limit: limit,
-            skip: skip,
-          },
-        });
+        const response = await axios.get(
+          "https://site--marvel--h9xmd52lw246.code.run/comics",
+          {
+            params: {
+              title: search,
+              limit: limit,
+              skip: skip,
+            },
+          }
+        );
 
         setData(response.data);
         setIsLoading(false);

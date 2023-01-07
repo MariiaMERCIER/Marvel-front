@@ -18,11 +18,14 @@ const SignUp = ({ handleTokenUsername }) => {
         return;
       }
 
-      const response = await axios.post("http://localhost:4000/user/signup", {
-        name: name,
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://site--marvel--h9xmd52lw246.code.run/user/signup",
+        {
+          name: name,
+          email: email,
+          password: password,
+        }
+      );
 
       handleTokenUsername(
         response.data.token,

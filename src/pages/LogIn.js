@@ -21,10 +21,13 @@ const LogIn = ({ handleTokenUsername }) => {
         return;
       }
 
-      const response = await axios.post("http://localhost:4000/user/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://site--marvel--h9xmd52lw246.code.run/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
 
       handleTokenUsername(
         response.data.token,
@@ -60,13 +63,12 @@ const LogIn = ({ handleTokenUsername }) => {
             }}
           />
           <div>
-            {" "}
-            <button>JOIN US</button>{" "}
+            <button>JOIN US</button>
             <Link to="/user/signup">
               <p className="link">You have no account?</p>
             </Link>
           </div>
-        </form>{" "}
+        </form>
       </div>
     </div>
   );
